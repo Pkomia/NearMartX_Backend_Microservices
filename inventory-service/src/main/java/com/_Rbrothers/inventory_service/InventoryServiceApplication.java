@@ -24,16 +24,16 @@ public class InventoryServiceApplication {
 			inventory.setQuantity(2);
             
 			Inventory inventory1 = new Inventory();
-			inventory.setSkuCode("i_phone_14");
-			inventory.setQuantity(3);
+			inventory1.setSkuCode("i_phone_14");
+			inventory1.setQuantity(3);
 
 			Inventory inventory2 = new Inventory();
-			inventory.setSkuCode("i_phone_15");
-			inventory.setQuantity(1);
+			inventory2.setSkuCode("i_phone_15");
+			inventory2.setQuantity(1);
 
 			Inventory inventory3 = new Inventory();
-			inventory.setSkuCode("i_phone_16");
-			inventory.setQuantity(2);
+			inventory3.setSkuCode("i_phone_16");
+			inventory3.setQuantity(2);
 
 			inventoryRepository.save(inventory);
 			inventoryRepository.save(inventory1);
