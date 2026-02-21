@@ -34,10 +34,6 @@ hs_err_pid*
 # Spring Boot
 ############################################
 **/logs/
-**/application-local.yml
-**/application-dev.yml
-**/application-prod.yml
-**/application.yml
 
 ############################################
 # Environment variables / secrets
