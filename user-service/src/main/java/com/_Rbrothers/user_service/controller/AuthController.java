@@ -17,7 +17,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -31,14 +30,8 @@ public class AuthController {
     public ResponseEntity<String> register(
             @Valid @RequestBody RegisterRequest request) {
 
-        try {
-            userService.register(request);
-            return ResponseEntity.ok("User registered successfully");
-        } catch (Exception e) {
-            // Log the error for debugging
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
-        }
+        userService.register(request);
+        return ResponseEntity.ok("User registered successfully");
     }
 
     @PostMapping("/login")
