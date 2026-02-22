@@ -35,6 +35,16 @@ public class JwtService {
                 .compact();
     }
 
+    public String generateRefreshToken(User user) {
+
+        return Jwts.builder()
+                .subject(user.getEmail())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 7))
+                .signWith(secretKey)
+                .compact();
+        }
+
     public String extractUsername(String token) {
         return Jwts.parser()
                 .verifyWith(secretKey)
