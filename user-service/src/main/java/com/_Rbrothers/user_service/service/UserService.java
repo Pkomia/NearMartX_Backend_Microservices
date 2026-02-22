@@ -12,6 +12,8 @@ import com._Rbrothers.user_service.dto.RegisterRequest;
 import com._Rbrothers.user_service.dto.UserResponse;
 import com._Rbrothers.user_service.entity.Role;
 import com._Rbrothers.user_service.entity.User;
+import com._Rbrothers.user_service.exception.EmailAlreadyExistsException;
+import com._Rbrothers.user_service.exception.InvalidCredentialsException;
 import com._Rbrothers.user_service.repository.RoleRepository;
 import com._Rbrothers.user_service.repository.UserRepository;
 import com._Rbrothers.user_service.security.JwtService;
@@ -32,7 +34,7 @@ public class UserService {
     public void register(RegisterRequest request) {
 
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already registered");
+            throw new EmailAlreadyExistsException("Email already registered");
         }
 
         Role customerRole = roleRepository
@@ -51,10 +53,10 @@ public class UserService {
     public LoginResponse login(LoginRequest request) {
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+                .orElseThrow(() -> new InvalidCredentialsException("Invalid credentials"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
+            throw new InvalidCredentialsException("Invalid credentials");
         }
 
         String token = jwtService.generateToken(user);
