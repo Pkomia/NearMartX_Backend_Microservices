@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class JwtService {
 
+        // will keep it secure int Keyvalue/password manager on prod env
     private static final String SECRET =
-            "your-super-secret-key-your-super-secret-key";
+            "AujW6k216Ji%{F{(vyad4rSJSZ99K(Y_:(t-,rM/oOX";
 
     private final SecretKey secretKey =
             Keys.hmacShaKeyFor(SECRET.getBytes());
