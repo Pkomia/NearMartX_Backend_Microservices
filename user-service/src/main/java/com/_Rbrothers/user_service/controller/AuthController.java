@@ -54,5 +54,10 @@ public class AuthController {
     public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
         UserResponse user = userService.getUser(id);
         return ResponseEntity.ok(user);
-    }    
+    }
+    
+    @GetMapping("/test")
+    public String testRateLimiter(){
+        return "Hello, Working up!";
+    }
 }
