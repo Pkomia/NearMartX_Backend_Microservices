@@ -19,6 +19,16 @@ spring:
     user: root
     password: abc##0987
 
+# Configure Actuator Endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
 eureka:
   instance:
     prefer-ip-address: true
