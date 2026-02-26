@@ -48,3 +48,14 @@ spring:
                 - Path=/eureka/**
               filters:
                 - RewritePath=/eureka/?(?<segment>.*), /${segment}
+
+
+# Configure Actuator Endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
