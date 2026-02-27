@@ -62,11 +62,13 @@ public class JwtGatewayFilter implements GlobalFilter, Ordered {
                     .getPayload();
 
             String email = claims.getSubject();
+            Long userId = claims.get("userId", Long.class);
             List<String> roles = claims.get("roles", List.class);
 
             // Add identity headers for downstream services
             var mutatedRequest = exchange.getRequest().mutate()
                     .header("X-User-Email", email)
+                    .header("X-User-Id", userId.toString())
                     .header("X-User-Roles", String.join(",", roles))
                     .build();
 
