@@ -32,6 +32,14 @@ spring:
               predicates:
                 - Path=/api/product/**
 
+            - id: cart-service
+              uri: lb://cart-service
+              predicates:
+                - Path=/api/cart/**
+              filters:
+                - PreserveHostHeader
+                
+
             - id: order-service
               uri: lb://order-service
               predicates:
