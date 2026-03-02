@@ -40,4 +40,9 @@ public class CartController {
     public void clearCart(@RequestHeader("X-User-Id") Long userId) {
         cartService.clearCart(userId);
     } 
+    
+    @GetMapping("/health")
+    public String healthCheck() {
+        return new String("Everything working perfectly Pradeep!");
+    }
 }
